@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAllRooms } from "../utils/api"
+import type { ChatRoom } from "../types/types";
 
-type ChatRoom = {
-  id: string;
-  name: string;
-};
 
 const AllChatRooms = () => {
   const navigate = useNavigate();
@@ -32,6 +29,7 @@ const AllChatRooms = () => {
             className="room-card"
             onClick={() => navigate(`/room/${room.id}`)}
           >
+            
             <h3>{room.name}</h3>
           </div>
         ))}

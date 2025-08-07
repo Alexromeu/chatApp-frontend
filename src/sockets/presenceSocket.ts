@@ -20,8 +20,8 @@ export const emitStopTyping = (roomId: string, senderId: string) => {
 };
 
 export const listenForTyping = (
-  onTyping: (roomId: string, senderId: string) => void,
-  onStopTyping: (roomId: string, senderId: string) => void
+  onTyping: (payload: {roomId: string, senderId: string}) => void,
+  onStopTyping: (payload: {roomId: string, senderId: string}) => void
 
 ) => {
   socket.on("typing", onTyping);

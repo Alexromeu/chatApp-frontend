@@ -1,26 +1,30 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getChatRooms, createChatRoom } from "../utils/api";
+import { jwtDecode } from "jwt-decode";
+import type { TokenPayload } from "../types/types";
+import type { ChatRoom } from "../types/types";
 
-
-type ChatRoom = {
-  id: string;
-  name: string;
-};
 
 const ChatList = () => {
   const { userId } = useParams();
   const navigate = useNavigate();
   const [rooms, setRooms] = useState<ChatRoom[]>([]);
   const [newRoomName, setNewRoomName] = useState("");
+  const [username, setUsername] = useState("")
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
+
     if (!token || !userId) return;
     getChatRooms(userId)
       .then((res) => {
         setRooms(res.data);
       });
+    
+    const decoded = jwtDecode<TokenPayload>(token!)
+    setUsername(decoded.username)
+
   }, [userId]);
 
   const handleCreateRoom = async () => {
@@ -43,7 +47,7 @@ const ChatList = () => {
   return (
     <div className="chat-list-page">
         
-      <h2>Welcome, user {userId}</h2>
+      <h2>Welcome, user {username}</h2>
 
       <h3
       className="see-all-rooms"
@@ -59,7 +63,6 @@ const ChatList = () => {
             className="room-card"
             onClick={() => navigate(`/room/${room.id}`)}
           >
-            
             <h3>{room.name}</h3>
           </div>
         ))}

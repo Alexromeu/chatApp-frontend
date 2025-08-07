@@ -10,3 +10,7 @@ export const createChatRoom = (payload: { name: string; creator: string }) =>
 export const getAllRooms = () => {
   return axiosInstance.get("/chatrooms/all");
 }
+
+export const getRoomById = (roomId: string) => 
+  axiosInstance.get(`/getRoom?roomId=${roomId}`); 
+

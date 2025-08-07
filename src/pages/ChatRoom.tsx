@@ -1,11 +1,13 @@
 import { useChatSocket } from "../hooks/useSockets";
 import { useSocket } from "../context/SocketContext";
 import {  useRef, useState } from "react";
-import OnlineUsers from "../components/OnlineUsers"
+import OnlineUsers from "../components/OnlineUsers";
+import ChatBubble from "../components/ChatBubble";
 import TypingIndicator from "../components/TypingIndicator";
+import "../App.css"
  
 const ChatRoom = () => {
-  const { roomId, userId } = useSocket();
+  const { roomId, userId, username, roomname } = useSocket();
   const {
     messages,
     sendMessage,
@@ -20,15 +22,19 @@ const ChatRoom = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
     emitTyping();
+
     if (typingTimeout.current !== null) {
       clearTimeout(typingTimeout.current);
 }
+
     typingTimeout.current = setTimeout(() => emitStopTyping(), 1000);
   };
 
   const handleSend = () => {
     if (text.trim() === "") return;
-    sendMessage({ content: text, roomId, senderId: userId!, timestamp: Date.now() });
+
+    sendMessage({ content: text, roomId, senderId: userId!, timestamp: Date.now(), sendername: username! });
+   
     setText("");
     emitStopTyping();
   };
@@ -37,20 +43,22 @@ const ChatRoom = () => {
   return (
     <div className="chat-room">
       <div className="chat-header">
-        <h2>Room: {roomId}</h2>
+        <h2>Room: {roomname}</h2>
         <OnlineUsers />
       </div>
 
       <div className="chat-messages">
         {messages.map((msg) => (
-          <div key={msg.id} className="chat-bubble">
-            <strong>{msg.senderId}: </strong>
-            <span>{msg.content}</span>
-          </div>
-        ))}
+         <ChatBubble
+      key={msg.id}
+      sendername={msg.sendername}
+      content={msg.content}
+      isOwnMessage={msg.senderId === userId}
+       />
+       ))}
       </div>
 
-      <TypingIndicator  />
+      <TypingIndicator />
 
       <div className="chat-input">
         <input

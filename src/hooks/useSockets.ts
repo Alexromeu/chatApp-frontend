@@ -9,7 +9,7 @@ import type { MessagePayload } from "../types/types";
 
 
 export const useChatSocket = () => {
-  const { socket, roomId, userId } = useSocket();
+  const { socket, userId, roomId } = useSocket();//info used for typing
   const { messages, setMessages } = useMessages(roomId, userId!);
   const [ onlineUsers, setOnlineUsers ] = useState<string[]>([]);
   const [ typingUsers, setTypingUsers ] = useState<Record<string, string[]>>({});
@@ -25,6 +25,7 @@ export const useChatSocket = () => {
     });
 
     onOnlineUsersUpdate((incomingRoomId, users) => {
+
   if (incomingRoomId === roomId) {
     setOnlineUsers(users);
   }
@@ -32,25 +33,29 @@ export const useChatSocket = () => {
 
 
     listenForTyping(
-    (roomId, senderId) => {
+    (typingPayload) => {
+     const { roomId, senderId } = typingPayload;//payload comming from BE
         setTypingUsers(prev => {
         const current = prev[roomId] || [];
         const updated = [...new Set([...current, senderId])];
+
         return { ...prev, [roomId]: updated };
         });
     },
 
-    (roomId, senderId) => {
+    (typingPayload) => {
+      const { roomId, senderId } = typingPayload;
         setTypingUsers(prev => {
         const updated = (prev[roomId] || []).filter(id => id !== senderId);
+        
         return { ...prev, [roomId]: updated };
         });
     }
     );
 
 
-    listenForUserJoined((roomId, uid) => {console.log(`User ${uid} Jointed Room ${roomId}`)});
-    listenForUserLeft((roomId, uid) => {console.log(`User ${uid} left room ${roomId}`)});
+    listenForUserJoined((roomId, uid) => {console.log("listenForUserJoined")});
+    listenForUserLeft((roomId, uid) => {console.log("listenForUserLeft")});
 
     return () => {
       leaveRoom(roomId, userId);
