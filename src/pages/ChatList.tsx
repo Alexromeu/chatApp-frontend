@@ -4,6 +4,8 @@ import { getChatRooms, createChatRoom } from "../utils/api";
 import { jwtDecode } from "jwt-decode";
 import type { TokenPayload } from "../types/types";
 import type { ChatRoom } from "../types/types";
+import NoRoomName from "../components/messages/NoRoomName";
+import "../styles/chat_list_page.css"
 
 
 const ChatList = () => {
@@ -11,7 +13,8 @@ const ChatList = () => {
   const navigate = useNavigate();
   const [rooms, setRooms] = useState<ChatRoom[]>([]);
   const [newRoomName, setNewRoomName] = useState("");
-  const [username, setUsername] = useState("")
+  const [username, setUsername] = useState("");
+  const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
@@ -29,7 +32,11 @@ const ChatList = () => {
 
   const handleCreateRoom = async () => {
     const token = localStorage.getItem("authToken");
-    if (!newRoomName || !token || !userId) return;
+    if (!token || !userId) return;
+    
+
+    if (!newRoomName) setIsOpen(true);
+      
 
     try {
       const res = await createChatRoom({ name: newRoomName, creator: userId})
@@ -47,7 +54,7 @@ const ChatList = () => {
   return (
     <div className="chat-list-page">
         
-      <h2>Welcome, user {username}</h2>
+      <h2  className="welcome-message">Welcome, user {username}</h2>
 
       <h3
       className="see-all-rooms"
@@ -76,6 +83,12 @@ const ChatList = () => {
         />
         <button onClick={handleCreateRoom}>Create Room</button>
       </div>
+
+      <NoRoomName isOpen={isOpen} onTryAgain={() => {
+        navigate(`/chatlist/${userId}`)
+        setIsOpen(false)
+        }}/>
+
     </div>
   );
 };

@@ -5,16 +5,5 @@
   text-align: center;
 }
 
-.chat-bubble {
-  padding: 8px 12px;
-  margin: 6px 0;
-  border-radius: 8px;
-  background-color: #f1f1f1;
-  max-width: 70%;
-}
 
-.chat-bubble.own-message {
-  background-color: #d1e7dd;
-  align-self: flex-end;
-  text-align: right;
-}
+

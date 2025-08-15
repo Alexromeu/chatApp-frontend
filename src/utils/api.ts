@@ -14,3 +14,5 @@ export const getAllRooms = () => {
 export const getRoomById = (roomId: string) => 
   axiosInstance.get(`/getRoom?roomId=${roomId}`); 
 
+export const getFilteredRooms = (query: string) => 
+  axiosInstance.get(`/filterRoom/?name=${query}`)

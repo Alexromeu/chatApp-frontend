@@ -2,13 +2,16 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 import axiosInstance from "../utils/axios";
+import UserAlreadyExist from "../components/messages/UserAlreadyExist";
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate()
   const { userId } = useAuth()
+  
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,9 +23,10 @@ const Register = () => {
       navigate(`/chatlist/${userId}`);
 
     } catch (err: unknown) {
-      const error = err instanceof Error ? err.message : "Registration failed";
-      setMessage(error);
-    }
+     if (err) {
+    setIsOpen(true);
+  }
+  }
   };
 
   return (
@@ -49,8 +53,9 @@ const Register = () => {
       <button type="submit">Sign In</button>
 
       <p>{message}</p>
-      
+      <UserAlreadyExist isOpen={isOpen} goToLogin={() => navigate("/")} />
     </form>
+    
   );
 };
 

@@ -1,0 +1,35 @@
+.online-users {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* aligns everything to the right */
+  padding: 0.5rem;
+  gap: 0.5rem; /* space between rooms */
+}
+
+.online-users h3 {
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+.each-user-online ul {
+  display: flex;          /* make the users horizontal */
+  gap: 0.5rem;            /* space between users */
+  margin: 0;
+  padding: 0;
+  list-style-type: none;   /* remove bullet points */
+}
+
+.each-user-online ul p {
+  padding: 0.1rem 0.3rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: var(--color-text);
+
+  margin: 0;
+}
+
+.each-user-online ul p:not(:last-child)::after {
+  content: "•";  
+  margin-left: 0.5rem;
+  color: #6b7280; 
+}

@@ -1,0 +1,22 @@
+.chat-bubble {
+  max-width: 70%;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  word-wrap: break-word;
+  position: relative;
+}
+
+.chat-bubble.own {
+  align-self: flex-end;
+  background-color: var(--color-button);
+  color: white;
+  border-bottom-right-radius: 0;
+}
+
+.chat-bubble.other {
+  align-self: flex-start;
+  background-color: #e5e7eb;
+  color: #111827;
+  border-bottom-left-radius: 0;
+}

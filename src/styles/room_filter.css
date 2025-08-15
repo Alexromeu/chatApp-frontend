@@ -1,0 +1,37 @@
+.room-filter {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.room-filter input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+}
+
+.filtered-room-list {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.chat-list-page h2 {
+  color: var(--color-text)
+}
+
+.chat-list-page button {
+  color: var(--color-text);
+  background-color: var(--color-button);
+}
+
+.chat-list-page button:hover {
+  color: var(--color-text);
+  background-color: var(--color-button-hover);
+}
+

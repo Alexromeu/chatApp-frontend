@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/chat_bubble.css"
 
 
 interface ChatBubbleProps {
@@ -9,7 +10,7 @@ interface ChatBubbleProps {
 
 const ChatBubble: React.FC<ChatBubbleProps> = ({ sendername, content, isOwnMessage }) => {
   return (
-    <div className={`chat-bubble ${isOwnMessage ? "own-message" : ""}`}>
+    <div className={`chat-bubble ${isOwnMessage ? "own" : "other"}`}>
       <strong>{sendername}: </strong>
       <span>{content}</span>
     </div>

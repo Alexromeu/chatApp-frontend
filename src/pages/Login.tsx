@@ -3,9 +3,12 @@ import axiosInstance from "../utils/axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext"
 import axios from "axios"
-
+import UserNotFoundDialog from "../components/messages/UserNotFoundDialog";
+import "../styles/dialog_login_box.css"
+import "../styles/login_form.css"
 
 const Login = () => {
+  const [showDialog, setShowDialog] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -25,10 +28,11 @@ const Login = () => {
     } catch (err: any) {
       if (axios.isAxiosError(err)) {
         if (err.response?.status === 401) {
-        navigate('/register');
+          setShowDialog(true)
+
         return;
     }
-    setMessage(err.response?.data?.message || "Login failed");
+
   } else {
     setMessage("Unexpected error occurred");
   }
@@ -37,6 +41,8 @@ const Login = () => {
   };
 
   return (
+    <>
+    <div className="login-container">
     <form onSubmit={handleSubmit} className="login-form">
 
       <h2>Login</h2>
@@ -61,8 +67,13 @@ const Login = () => {
 
       <button type="submit">Log In</button>
       
-      <p>{message}</p>
+      <p className="login-message">{message}</p>
     </form>
+    <button onClick={()=>navigate('/register')} className="register-button">SignIn</button>
+    </div>
+    <UserNotFoundDialog isOpen={showDialog} onTryAgain={() => setShowDialog(false)} onSignIn={() => navigate('/register')}/>
+
+    </>
   );
 };
 

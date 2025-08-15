@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { onOnlineUsersUpdate } from "../sockets/presenceSocket";
-
 import { fetchUsernames } from "../utils/fetchUsernames";
+import "../styles/online_users.css"
 
 const OnlineUsers = () => {
 
@@ -21,18 +21,18 @@ const OnlineUsers = () => {
   }, []);
 
   return (
-    <div className="online-users p-4">
+    <div className="online-users">
 
-      <h3 className="text-lg font-semibold mb-2">Online Users</h3>
+      <h3>Online Users</h3>
 
       {Object.entries(roomUsers).map(([roomId, users]) => (
-        <div key={roomId} className="mb-4">
+        <div key={roomId} className="each-user-online">
 
-          <ul className="space-y-1">
+          <ul>
             {users.map((user) => (
-              <li key={user} className="text-green-600">
-                🟢 {user}
-              </li>
+              <p key={user}>
+                {user}
+              </p>
             ))}
           </ul>
 

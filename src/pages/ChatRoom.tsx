@@ -4,7 +4,9 @@ import {  useRef, useState } from "react";
 import OnlineUsers from "../components/OnlineUsers";
 import ChatBubble from "../components/ChatBubble";
 import TypingIndicator from "../components/TypingIndicator";
-import "../App.css"
+import { BackButton } from "../components/BackButton";
+import "../styles/chat.css"
+
  
 const ChatRoom = () => {
   const { roomId, userId, username, roomname } = useSocket();
@@ -42,14 +44,17 @@ const ChatRoom = () => {
   
   return (
     <div className="chat-room">
+      <BackButton />
       <div className="chat-header">
-        <h2>Room: {roomname}</h2>
-        <OnlineUsers />
+        <h2>{roomname}</h2>
       </div>
+      
+      <OnlineUsers /> 
 
       <div className="chat-messages">
         {messages.map((msg) => (
          <ChatBubble
+   
       key={msg.id}
       sendername={msg.sendername}
       content={msg.content}
