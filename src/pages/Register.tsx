@@ -20,7 +20,7 @@ const Register = () => {
       const res = await axiosInstance.post("/signin", { username, password });
       setMessage("User registered successfully!");
       sessionStorage.setItem("authToken", res.data.token)
-      console.log(res.data)
+      
       navigate(`/chatlist/${userId}`);
 
     } catch (err: unknown) {
