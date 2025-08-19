@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [username, setUsername] = useState<string | null>(null)
 
   useEffect(() => {
-    const stored = localStorage.getItem("authToken");
+    const stored = sessionStorage.getItem("authToken");
 
     if (stored) {
       setToken(stored);
