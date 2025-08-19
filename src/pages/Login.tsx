@@ -23,7 +23,7 @@ const Login = () => {
       const res = await axiosInstance.post("/login", { username, password });
       const { token } = res.data;
       login(token)
-      console.log(userId)
+      console.log("login file ", userId)
       navigate(`/chatlist/${userId}`);
 
     } catch (err: any) {
