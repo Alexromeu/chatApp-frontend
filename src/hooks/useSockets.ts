@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSocket } from "../context/SocketContext";
 import { listenForChatMessages, sendMessage, } from "../sockets/chatSocket";
-import { joinRoom, leaveRoom, listenForUserJoined, listenForUserLeft } from "../sockets/roomSocket";
+import { joinRoom, leaveRoom } from "../sockets/roomSocket";
 import { emitUserOnline, emitTyping, emitStopTyping, listenForTyping, onOnlineUsersUpdate } from "../sockets/presenceSocket"
 import { useMessages } from "../hooks/useMessages"
 
@@ -34,7 +34,7 @@ export const useChatSocket = () => {
 
     listenForTyping(
     (typingPayload) => {
-     const { roomId, senderId } = typingPayload;//payload comming from BE
+     const { roomId, senderId } = typingPayload;
         setTypingUsers(prev => {
         const current = prev[roomId] || [];
         const updated = [...new Set([...current, senderId])];
@@ -53,9 +53,6 @@ export const useChatSocket = () => {
     }
     );
 
-
-    listenForUserJoined((roomId, uid) => {console.log("listenForUserJoined")});
-    listenForUserLeft((roomId, uid) => {console.log("listenForUserLeft")});
 
     return () => {
       leaveRoom(roomId, userId);
