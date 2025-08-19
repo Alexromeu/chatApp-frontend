@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const login = (newToken: string) => {
-    localStorage.setItem("authToken", newToken);
+    sessionStorage.setItem("authToken", newToken);
     setToken(newToken);
     const decoded = jwtDecode<TokenPayload>(newToken);
     setUserId(decoded.userId);
