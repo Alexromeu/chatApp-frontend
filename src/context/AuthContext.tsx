@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, []);
 
-  const login = (newToken: string) => {
+  const login = (newToken: string) => { 
     sessionStorage.setItem("authToken", newToken);
     setToken(newToken);
     const decoded = jwtDecode<TokenPayload>(newToken);
@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setToken(null);
     setUserId(null);
   };
-
+console.log("authContext file: ", token, userId, username)
   return (
     <AuthContext.Provider
       value={{
