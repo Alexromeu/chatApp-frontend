@@ -9,11 +9,9 @@ export const useMessages = (roomId: string, userId: string) => {
 
     if (!userId) return;
 
-    const currentUserId = userId
-    console.log(currentUserId)
     axiosInstance
       .get('/messages', {
-        params: { roomId, userId: currentUserId } //userId is null, in params only have roomId
+        params: { roomId, userId } //userId is null, in params only have roomId
       })
       .then(res => {
         setMessages(res.data)
@@ -21,7 +19,7 @@ export const useMessages = (roomId: string, userId: string) => {
       })
       .catch(error => {
         
-        console.error('Error fetching messages:', error, currentUserId);
+        console.error('Error fetching messages:', error, userId);
       });
      
   
