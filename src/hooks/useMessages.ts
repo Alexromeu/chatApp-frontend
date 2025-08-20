@@ -14,7 +14,7 @@ export const useMessages = (roomId: string, userId: string) => {
       .catch(error => {
         console.error('Error fetching messages:', error);
       });
-
+     console.log("useMessagesFile ",roomId, userId)
   }, [roomId, userId]);
 
   return { messages, setMessages };
