@@ -17,7 +17,7 @@ const ChatList = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
-    const token = localStorage.getItem("authToken");
+    const token = sessionStorage.getItem("authToken");
 console.log("chatlist file ", userId)
     if (!token || !userId) return;
     getChatRooms(userId)

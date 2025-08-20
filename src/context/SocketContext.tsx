@@ -22,7 +22,7 @@ export const SocketProvider = ({
   const [roomname, setRoomname ] = useState<string | null>(null)
 
   useEffect(() => {
-    const token = localStorage.getItem("authToken");
+    const token = sessionStorage.getItem("authToken");
     
     getRoomById(roomId)
       .then((res) => {
