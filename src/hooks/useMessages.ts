@@ -15,7 +15,7 @@ console.log(userId)
       })
       .then(res => {
         setMessages(res.data)
-        
+        console.log(res.data)
       })
       .catch(error => {
         
