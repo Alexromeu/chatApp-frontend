@@ -10,11 +10,13 @@ export const useMessages = (roomId: string, userId: string) => {
       .get('/messages', {
         params: { roomId, userId }
       })
-      .then(res => setMessages(res.data))
+      .then(res => {setMessages(res.data)
+        console.log("useMessagesFile ",roomId, userId)
+       })
       .catch(error => {
         console.error('Error fetching messages:', error);
       });
-     console.log("useMessagesFile ",roomId, userId)
+     
   }, [roomId, userId]);
 
   return { messages, setMessages };
