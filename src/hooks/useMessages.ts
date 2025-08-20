@@ -6,18 +6,22 @@ export const useMessages = (roomId: string, userId: string) => {
   const [messages, setMessages] = useState<Message[]>([]);
  
   useEffect(() => {
+
+    if (!userId) return;
+
+    const currentUserId = userId
     
     axiosInstance
       .get('/messages', {
-        params: { roomId, userId } //userId is null, in params only have roomId
+        params: { roomId, userId: currentUserId } //userId is null, in params only have roomId
       })
       .then(res => {
         setMessages(res.data)
-        console.log(userId)
+        console.log(currentUserId)
       })
       .catch(error => {
         
-        console.error('Error fetching messages:', error, userId);
+        console.error('Error fetching messages:', error, currentUserId);
       });
      
   
