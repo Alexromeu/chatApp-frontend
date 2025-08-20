@@ -14,7 +14,7 @@ export const useMessages = (roomId: string, userId: string) => {
         params: { roomId, userId } 
       })
       .then(res => {
-         console.log(messages)
+         console.log("useMessge : error : ",messages)
         setMessages(res.data)
       })
       .catch(error => {
