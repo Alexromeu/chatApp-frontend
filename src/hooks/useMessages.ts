@@ -8,7 +8,7 @@ export const useMessages = (roomId: string, userId: string) => {
   useEffect(() => {
 
     if (!userId) return;
-
+console.log(userId)
     axiosInstance
       .get('/messages', {
         params: { roomId, userId } //userId is null, in params only have roomId
