@@ -4,15 +4,13 @@ import type { Message } from "../types/types"
 
 export const useMessages = (roomId: string, userId: string) => {
   const [messages, setMessages] = useState<Message[]>([]);
-
+ console.log(userId)
   useEffect(() => {
     axiosInstance
       .get('/messages', {
-        params: { roomId, userId }
+        params: { roomId, userId } //userId is null, in params only have roomId
       })
-      .then(res => {setMessages(res.data)
-        console.log("useMessagesFile ",roomId, userId)
-       })
+      .then(res => setMessages(res.data))
       .catch(error => {
         console.error('Error fetching messages:', error);
       });
