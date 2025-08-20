@@ -18,7 +18,7 @@ const ChatList = () => {
 
   useEffect(() => {
     const token = sessionStorage.getItem("authToken");
-console.log("chatlist file ", userId)
+
     if (!token || !userId) return;
     getChatRooms(userId)
       .then((res) => {

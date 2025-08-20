@@ -11,7 +11,7 @@ export const useMessages = (roomId: string, userId: string) => {
 
     axiosInstance
       .get('/messages', {
-        params: { roomId, userId } //userId is null, in params only have roomId
+        params: { roomId, userId } 
       })
       .then(res => {
          console.log(messages)
