@@ -31,7 +31,7 @@ console.log("chatlist file ", userId)
   }, [userId]);
 
   const handleCreateRoom = async () => {
-    const token = localStorage.getItem("authToken");
+    const token = sessionStorage.getItem("authToken");
     if (!token || !userId) return;
     
 

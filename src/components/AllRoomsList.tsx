@@ -11,7 +11,7 @@ const AllChatRooms = () => {
   const [ isFiltred, setIsFiltered ] = useState(false)
 
   useEffect(() => {
-    const token = localStorage.getItem("authToken");
+    const token = sessionStorage.getItem("authToken");
     if (!token) return;
 
     getAllRooms()
