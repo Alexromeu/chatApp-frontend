@@ -11,12 +11,16 @@ export const useMessages = (roomId: string, userId: string) => {
       .get('/messages', {
         params: { roomId, userId } //userId is null, in params only have roomId
       })
-      .then(res => setMessages(res.data))
+      .then(res => {
+        setMessages(res.data)
+        console.log(userId)
+      })
       .catch(error => {
         
         console.error('Error fetching messages:', error, userId);
       });
      
+  
   }, [roomId, userId]);
 
   return { messages, setMessages };
