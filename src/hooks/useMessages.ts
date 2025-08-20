@@ -13,8 +13,8 @@ export const useMessages = (roomId: string, userId: string) => {
       })
       .then(res => setMessages(res.data))
       .catch(error => {
-        console.log("useMessage",userId)
-        console.error('Error fetching messages:', error);
+        
+        console.error('Error fetching messages:', error, userId);
       });
      
   }, [roomId, userId]);
