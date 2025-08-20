@@ -14,8 +14,8 @@ console.log(userId)
         params: { roomId, userId } //userId is null, in params only have roomId
       })
       .then(res => {
+         console.log("messages" ,messages)
         setMessages(res.data)
-        console.log("messages" ,messages)
       })
       .catch(error => {
         
