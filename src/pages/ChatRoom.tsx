@@ -34,7 +34,9 @@ const ChatRoom = () => {
 
   const handleSend = () => {
     if (text.trim() === "") return;
+
    console.log("send logic: ", text, roomId, userId)
+
     sendMessage({ content: text, roomId, senderId: userId!, timestamp: Date.now(), sendername: username! });
    
     setText("");
@@ -44,7 +46,9 @@ const ChatRoom = () => {
   
   return (
     <div className="chat-room">
+      
       <BackButton />
+
       <div className="chat-header">
         <h2>{roomname}</h2>
       </div>

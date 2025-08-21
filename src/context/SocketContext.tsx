@@ -18,16 +18,13 @@ export const SocketProvider = ({
 
 }) => {
   const [userId, setUserId] = useState<string | null>(null);
-  const [username, setUsername ] = useState<string | null>(null)
-  const [roomname, setRoomname ] = useState<string | null>(null)
+  const [username, setUsername ] = useState<string | null>(null);
+  const [roomname, setRoomname ] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const token = sessionStorage.getItem("authToken");
     
-    getRoomById(roomId)
-      .then((res) => {
-        setRoomname(res.data.name)
-      })
 
     if (token) {
       const decoded = jwtDecode<TokenPayload>(token);
@@ -39,6 +36,14 @@ export const SocketProvider = ({
       socket.connect();
       
     } 
+
+    getRoomById(roomId).then((res) => {
+      setRoomname(res.data.name);
+
+    }).finally(() => {
+    setLoading(false);
+
+  });
     return () => {
       socket.disconnect();
     };
@@ -47,7 +52,7 @@ export const SocketProvider = ({
 
   return (
     <SocketContext.Provider value={{ socket, userId, username, roomId, roomname }}>
-      {children}
+      {loading ? <div>Loading...</div> : children}
     </SocketContext.Provider>
   );
 };

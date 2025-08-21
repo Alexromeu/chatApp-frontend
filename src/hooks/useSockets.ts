@@ -9,7 +9,7 @@ import type { MessagePayload } from "../types/types";
 
 
 export const useChatSocket = () => {
-  const { socket, userId, roomId } = useSocket();//info used for typing
+  const { socket, userId, roomId } = useSocket();
   const { messages, setMessages } = useMessages(roomId, userId!);
   const [ onlineUsers, setOnlineUsers ] = useState<string[]>([]);
   const [ typingUsers, setTypingUsers ] = useState<Record<string, string[]>>({});
