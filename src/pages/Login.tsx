@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axiosInstance from "../utils/axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext"
@@ -16,6 +16,10 @@ const Login = () => {
   const navigate = useNavigate();
   const { login, userId } = useAuth()
 
+  useEffect(() => {
+        if (userId) navigate(`/chatlist/${userId}`);
+      }, [userId])
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -23,8 +27,8 @@ const Login = () => {
       const res = await axiosInstance.post("/login", { username, password });
       const { token } = res.data;
       login(token)
-      console.log("login file ", userId)
-      navigate(`/chatlist/${userId}`);
+      
+      
 
     } catch (err: any) {
       if (axios.isAxiosError(err)) {
