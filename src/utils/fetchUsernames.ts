@@ -6,7 +6,7 @@ export const fetchUsernames = async (userIds: string[]): Promise<string[]> => {
     const responses = await Promise.all(
       userIds.map(async (id) => {
         try {
-          const { data } = await axiosInstance.get(`/user/${id}`);
+          const { data } = await axiosInstance.get(`/api/user/${id}`);
           
           return data.username;
 
