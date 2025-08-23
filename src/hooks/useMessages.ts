@@ -10,7 +10,7 @@ export const useMessages = (roomId: string, userId: string) => {
     if (!userId) return;
 
     axiosInstance
-      .get('/messages', {
+      .get('/api/messages', {
         params: { roomId, userId } 
       })
       .then(res => {
