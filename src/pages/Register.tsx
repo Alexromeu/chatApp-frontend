@@ -17,7 +17,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const res = await axiosInstance.post("/signin", { username, password });
+      const res = await axiosInstance.post("/api/signin", { username, password });
       setMessage("User registered successfully!");
       sessionStorage.setItem("authToken", res.data.token)
       
