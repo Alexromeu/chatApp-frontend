@@ -17,8 +17,8 @@ const Login = () => {
   const { login, userId } = useAuth()
 
   useEffect(() => {
-        if (userId) navigate(`/chatlist/${userId}`);
-      }, [userId])
+    if (userId) navigate(`/chatlist/${userId}`);
+  }, [userId])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,8 +27,6 @@ const Login = () => {
       const res = await axiosInstance.post("/login", { username, password });
       const { token } = res.data;
       login(token)
-      
-      
 
     } catch (err: any) {
       if (axios.isAxiosError(err)) {

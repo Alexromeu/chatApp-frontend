@@ -35,7 +35,6 @@ const ChatRoom = () => {
   const handleSend = () => {
     if (text.trim() === "") return;
 
-   console.log("send logic: ", text, roomId, userId)
 
     sendMessage({ content: text, roomId, senderId: userId!, timestamp: Date.now(), sendername: username! });
    
