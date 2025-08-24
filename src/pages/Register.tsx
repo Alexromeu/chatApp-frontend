@@ -31,7 +31,7 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="register-form">
+    <form onSubmit={handleSubmit} className="login-form">
 
       <h2>Register</h2>
 
@@ -51,9 +51,9 @@ const Register = () => {
         required
       />
 
-      <button type="submit">Sign In</button>
+      <button type="submit" className="register-button">Sign In</button>
 
-      <p>{message}</p>
+      <p className="login-message">{message}</p>
       <UserAlreadyExist isOpen={isOpen} goToLogin={() => navigate("/")} />
     </form>
     
