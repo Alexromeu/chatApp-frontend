@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
+import { BackButton } from "../components/BackButton"
 import axiosInstance from "../utils/axios";
 import UserAlreadyExist from "../components/messages/UserAlreadyExist";
+
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -31,6 +33,7 @@ const Register = () => {
   };
 
   return (
+    <div  className="login-container">
     <form onSubmit={handleSubmit} className="login-form">
 
       <h2>Register</h2>
@@ -56,7 +59,8 @@ const Register = () => {
       <p className="login-message">{message}</p>
       <UserAlreadyExist isOpen={isOpen} goToLogin={() => navigate("/")} />
     </form>
-    
+    <BackButton/>
+    </div>
   );
 };
 
