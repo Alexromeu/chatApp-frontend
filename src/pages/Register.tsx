@@ -59,7 +59,7 @@ const Register = () => {
       <p className="login-message">{message}</p>
       <UserAlreadyExist isOpen={isOpen} goToLogin={() => navigate("/")} />
     </form>
-    <BackButton/>
+    <BackButton className="register-button"/>
     </div>
   );
 };
