@@ -26,17 +26,6 @@ This project focuses on clean component structure, predictable state management,
 - **Axios**
 - **JWT Authentication**
 
----
-
-## Project Structure
-src/
-├── components/       # UI components (chat window, message list, inputs, etc.)
-├── pages/            # Login, Register, Chat pages
-├── hooks/            # Custom hooks (auth, socket, etc.)
-├── context/          # Auth context, socket context
-├── services/         # API wrappers (Axios)
-└── main.tsx          # App entry point
-
 
 
 ---
