@@ -17,7 +17,7 @@ This project focuses on clean component structure, predictable state management,
 
 ---
 ## Project Structure
-text```
+```text
 .
 ├── public/                 # Static assets
 ├── src/
@@ -32,7 +32,7 @@ text```
 ├── index.html              # Vite HTML template
 ├── package.json
 └── vite.config.ts
-
+```
 
 ---
 
