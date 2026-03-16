@@ -3,7 +3,7 @@
   --color-primary: #4A90E2;
   --color-bg: #ffffff;
   --color-surface: #f5f5f5;
-  --color-text: #f5f5f5;
+  --color-text: rgba(0, 0, 0, 0.5);
   --color-text-muted: #6e6e6e;
   --color-a:#646cff;
   --color-a-hover: #535bf2;
@@ -13,9 +13,9 @@
   --color-success: #27ae60;
   --color-error: #e74c3c;
 
-  --color-background-main:#000000;
-  --color-background-secundary:#222222;
-  --color-background-tercary: #606060;
+  --color-background-main:#ede6e6;
+  --color-background-secundary: #dee0de;
+  --color-background-tercary: #e3d6d6;
 
   
 
@@ -45,6 +45,7 @@ a:hover {
 
 body {
   margin: 0;
+  justify-content: center;
   display: flex;
   place-items: center;
   min-width: 320px;
