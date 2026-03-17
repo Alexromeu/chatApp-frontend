@@ -4,8 +4,6 @@ import { jwtDecode } from "jwt-decode";
 import type { TokenPayload } from "../types/types"
 import type { AuthContextType } from "../types/types"
 
-
-
 const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
