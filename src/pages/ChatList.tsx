@@ -53,13 +53,20 @@ const ChatList = () => {
 
   return (
     <div className="chat-list-page">
-        
+      <div className="chat-list-scroll"> 
       <h2  className="welcome-message">Welcome, user {username}</h2>
+      <div className="create-room">
+        <input
+          value={newRoomName}
+          onChange={(e) => setNewRoomName(e.target.value)}
+          placeholder="New room name"
+        />
+        <button onClick={handleCreateRoom}>Create Room</button>
+      </div>
 
       <h3
       className="see-all-rooms"
-      onClick={() => navigate('/all-rooms')}
-      >
+      onClick={() => navigate('/all-rooms')}>
       See All Public Rooms
       </h3>
 
@@ -75,20 +82,11 @@ const ChatList = () => {
         ))}
       </div>
 
-      <div className="create-room">
-        <input
-          value={newRoomName}
-          onChange={(e) => setNewRoomName(e.target.value)}
-          placeholder="New room name"
-        />
-        <button onClick={handleCreateRoom}>Create Room</button>
-      </div>
-
       <NoRoomName isOpen={isOpen} onTryAgain={() => {
         navigate(`/chatlist/${userId}`)
         setIsOpen(false)
         }}/>
-
+    </div>
     </div>
   );
 };

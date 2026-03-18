@@ -1,14 +1,17 @@
 .chat-room {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100vh; /* full screen */
   padding: 1rem;
-  background-color: var(--color-background-secundary);
-  color: var(--color-text)
+  box-sizing: border-box;
+  background-color: #e4e8f0;
 }
 
 .chat-room button {
   background-color: var(--color-button);
+  width: 100px;
+  align-self: center;
+  
 } 
 .chat-room button:hover {
   background-color: var(--color-button-hover);
@@ -36,9 +39,12 @@
 
 .chat-input {
   display: flex;
-  padding: 1rem 0.5rem;
-  border-top: 1px solid #e5e7eb;
-  background-color: var(--color-background-secundary);
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: #111;
+  border-top: 1px solid #333;
+  position: sticky;
+  bottom: 0;
 }
 
 .chat-input input {
