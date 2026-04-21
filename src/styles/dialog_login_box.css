@@ -4,26 +4,69 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  backdrop-filter: blur(6px); /* Frosted glass effect */
-  background-color: rgba(0, 0, 0, 0.4); /* Dimmed overlay */
+  backdrop-filter: blur(6px);
+  background-color: var(--overlay);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999; /* Make sure it's above everything */
+  z-index: 9999;
+  padding: 1rem;
 }
 
 .dialog-content {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  max-width: 400px;
-  width: 90%;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  padding: 1.75rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  max-width: 440px;
+  width: 100%;
   text-align: center;
+}
+
+.dialog-content h2,
+.dialog-content h3 {
+  margin-top: 0;
+  color: var(--text-primary);
+}
+
+.dialog-content p {
+  color: var(--text-secondary);
+}
+
+.dialog-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.dialog-title-error {
+  color: var(--error);
+}
+
+.dialog-body {
+  margin-bottom: 1.25rem;
 }
 
 .dialog-actions {
   margin-top: 1.5rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.dialog-actions button {
+  padding: 0.55rem 1.1rem;
+  background-color: var(--accent);
+  color: var(--text-on-accent);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dialog-actions button:hover {
+  background-color: var(--accent-hover);
 }

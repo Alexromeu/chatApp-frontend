@@ -21,8 +21,8 @@ const UserNotFoundDialog: React.FC<UserNotFoundDialogProps> = ({
       open={isOpen}
       className="dialog-content"
     >
-      <h2 style={{ color: "#dc2626", fontSize: "1.25rem", fontWeight: "600", marginBottom: "1rem" }}>User Not Found</h2>
-      <p style={{ color: "#374151", marginBottom: "1.5rem" }}>
+      <h2 className="dialog-title dialog-title-error">User Not Found</h2>
+      <p className="dialog-body">
         We couldn’t find a user with that information. Please try again or sign in.
       </p>
       <div className="dialog-actions">

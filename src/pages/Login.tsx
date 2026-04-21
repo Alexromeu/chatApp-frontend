@@ -26,9 +26,10 @@ const Login = () => {
     try {
       const res = await axiosInstance.post("/api/login", { username, password });
       const { token } = res.data;
+      console.log(token);
       login(token)
 
-    } catch (err: any) {
+    } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
         if (err.response?.status === 401) {
           setShowDialog(true)

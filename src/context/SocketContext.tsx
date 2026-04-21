@@ -24,17 +24,14 @@ export const SocketProvider = ({
 
   useEffect(() => {
     const token = sessionStorage.getItem("authToken");
-    
 
     if (token) {
       const decoded = jwtDecode<TokenPayload>(token);
       setUserId(decoded.userId);
       setUsername(decoded.username);
       
-
       socket.auth = { token };
       socket.connect();
-      
     } 
 
     getRoomById(roomId).then((res) => {
@@ -48,7 +45,7 @@ export const SocketProvider = ({
       socket.disconnect();
     };
 
-  }, []);
+  }, [roomId]);
 
   return (
     <SocketContext.Provider value={{ socket, userId, username, roomId, roomname }}>

@@ -28,17 +28,19 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, []);
 
-  const login = (newToken: string) => { 
+  const login = (newToken: string) => {
     sessionStorage.setItem("authToken", newToken);
     setToken(newToken);
     const decoded = jwtDecode<TokenPayload>(newToken);
     setUserId(decoded.userId);
+    setUsername(decoded.username);
   };
 
   const logout = () => {
     sessionStorage.removeItem("authToken");
     setToken(null);
     setUserId(null);
+    setUsername(null);
   };
 
   return (
