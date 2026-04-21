@@ -20,8 +20,8 @@ const UserAlreadyExist: React.FC<UserAlreadyExist> = ({
       open={isOpen}
       className="dialog-content"
     >
-      <h2 style={{ color: "#dc2626", fontSize: "1.25rem", fontWeight: "600", marginBottom: "1rem" }}>User already exist</h2>
-      <p style={{ color: "#374151", marginBottom: "1.5rem" }}>
+      <h2 className="dialog-title dialog-title-error">User already exist</h2>
+      <p className="dialog-body">
         Please try to login.
       </p>
       <div className="dialog-actions">
