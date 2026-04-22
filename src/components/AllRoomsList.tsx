@@ -4,6 +4,8 @@ import { getAllRooms } from "../utils/api"
 import type { ChatRoom } from "../types/types";
 import { BackButton } from "./BackButton";
 import RoomFilter from "./RoomFilter";
+import HiveGrid from "./HiveGrid";
+import { seededGradient } from "../utils/colors";
 
 const AllChatRooms = () => {
   const navigate = useNavigate();
@@ -27,19 +29,21 @@ const AllChatRooms = () => {
 
       <RoomFilter setIsFiltered={setIsFiltered}/>
       
-      {!isFiltred && <div className="room-list">
-        {rooms.map((room) => (
-          <div
-            key={room.id}
-            className="room-card"
-            onClick={() => navigate(`/room/${room.id}`)}
-          >
-            
-            <h3>{room.name}</h3>
-          </div>
-        ))}
-        
-      </div>}
+      {!isFiltred && (
+        <HiveGrid
+          items={rooms}
+          getKey={(room) => room.id}
+          renderItem={(room) => (
+            <div
+              className="room-card"
+              style={{ backgroundImage: seededGradient(room.id) }}
+              onClick={() => navigate(`/room/${room.id}`)}
+            >
+              <h3>{room.name}</h3>
+            </div>
+          )}
+        />
+      )}
       <BackButton />
     </div>
   );

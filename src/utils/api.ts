@@ -14,5 +14,8 @@ export const getAllRooms = () => {
 export const getRoomById = (roomId: string) => 
   axiosInstance.get(`/api/getRoom?roomId=${roomId}`); 
 
-export const getFilteredRooms = (query: string) => 
+export const getFilteredRooms = (query: string) =>
   axiosInstance.get(`/api/filterRoom/?name=${query}`)
+
+export const deleteChatRoom = (roomId: string, userId: string) =>
+  axiosInstance.delete(`/api/chatrooms/${roomId}?userId=${userId}`);

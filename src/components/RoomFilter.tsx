@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getFilteredRooms } from "../utils/api";
 import type { ChatRoom } from "../types/types";
+import { seededGradient } from "../utils/colors";
 import "../styles/room_filter.css"
 
 interface RoomFilterProps {
@@ -45,7 +46,11 @@ const RoomFilter = ({ setIsFiltered }: RoomFilterProps) => {
 
       <div className="filtered-room-list">
         {filteredRooms.map((room) => (
-          <div key={room.id} className="room-card">
+          <div
+            key={room.id}
+            className="room-card"
+            style={{ backgroundImage: seededGradient(room.id) }}
+          >
             <h3 onClick={() => navigate(`/room/${room.id}`)}>{room.name}</h3>
           </div>
         ))}
