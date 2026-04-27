@@ -47,7 +47,9 @@ const Login = () => {
   return (
     <>
     <div className="login-container">
-    <h1>Sorry! But the Database licence expired, so the app is not available for now. Thanks!</h1>
+    <h3>Sorry! But the Database licence expired, so the app is not available for now. Thanks!</h3>
+    <a href="https://github.com/Alexromeu/chatApp-frontend">The source code can be seen by clicking here!</a>
+    <a href="https://github.com/Alexromeu/chatApp-backend">Since its a learning project the backend can alse be seen here!</a>
     <form onSubmit={handleSubmit} className="login-form">
 
       <h2>Login</h2>
