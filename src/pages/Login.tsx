@@ -47,6 +47,7 @@ const Login = () => {
   return (
     <>
     <div className="login-container">
+    <h1>Sorry! But the Database licence expired, so the app is not available for now. Thanks!</h1>
     <form onSubmit={handleSubmit} className="login-form">
 
       <h2>Login</h2>
