@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  // baseURL: "https://chatapp-backend-zo7f.onrender.com",
-  baseURL: "http://192.168.1.70:3000",
+  baseURL: "https://chatapp-backend-1-ne16.onrender.com",
   withCredentials: true
 });
 
