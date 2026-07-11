@@ -3,7 +3,7 @@ import "tailwindcss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ChatRoom from "./pages/ChatRoom";
 import Register from "./pages/Register";
-import Login from "./pages/Login";
+import {Login} from "./pages/Login";
 import ChatList from "./pages/ChatList";
 import { AuthProvider } from "./context/AuthContext";
 import { ThemeProvider } from "./context/ThemeContext";
