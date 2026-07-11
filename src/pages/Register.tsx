@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContext"
 import { BackButton } from "../components/BackButton"
 import axiosInstance from "../utils/axios";
 import UserAlreadyExist from "../components/messages/UserAlreadyExist";
-
+import { TimeoutMessage } from "./Login";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -13,16 +13,18 @@ const Register = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate()
   const { userId } = useAuth()
-  
+  const [startMessage, setStartMessage] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
+      setStartMessage(true)
       const res = await axiosInstance.post("/api/signin", { username, password });
       setMessage("User registered successfully!");
       sessionStorage.setItem("authToken", res.data.token)
-      
+      setStartMessage(false)
+
       navigate(`/chatlist/${userId}`);
 
     } catch (err: unknown) {
@@ -33,6 +35,8 @@ const Register = () => {
   };
 
   return (
+    <>
+    {startMessage && <TimeoutMessage />}
     <div  className="login-container">
     <form onSubmit={handleSubmit} className="login-form">
 
@@ -61,6 +65,7 @@ const Register = () => {
     </form>
     <BackButton className="register-button"/>
     </div>
+    </>
   );
 };
 

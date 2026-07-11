@@ -2,7 +2,8 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
   baseURL: "https://chatapp-backend-1-ne16.onrender.com",
-  withCredentials: true
+  withCredentials: true,
+  timeout: 6000
 });
 
 axiosInstance.interceptors.request.use((config) => {
@@ -10,6 +11,7 @@ axiosInstance.interceptors.request.use((config) => {
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
+
   return config;
 });
 

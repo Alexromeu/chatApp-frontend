@@ -99,3 +99,24 @@
     font-size: 1.75rem;
   }
 }
+
+.timeout-message {
+  text-align: center;
+  font-family: "Fira Code", "JetBrains Mono", "Source Code Pro",
+    "Cascadia Code", Consolas, "Courier New", monospace;
+  color: var(--text-primary);
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+}
+
+/* points */
+
+.p-1, .p-2, .p-3 {
+  display: block;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
